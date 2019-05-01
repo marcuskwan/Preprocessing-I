@@ -205,7 +205,11 @@ body {
 }
 @media (max-width: 500px) {
   .container .intro {
+    display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 }
 .container .intro .intro-img {

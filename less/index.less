@@ -197,7 +197,9 @@ body {
   flex-flow: wrap;
   @media (max-width: 500px) {
 	  max-height: 600px;
+	  background-color: blue;
   }
+
   header {
     width: 100%;
     display: flex;
@@ -231,18 +233,29 @@ body {
 	justify-content: center;
 	.margin-top-bot-min();
 	@media (max-width: 500px) {
+		display: flex;
 		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		background-color: blue;
 	}
 
     .intro-img {
-      width: @half;
+	  width: @half;
+	  @media (max-width: 500px) {
+		  width: @full;
+	  }
 	}
     .intro-text {
       width: 47%;
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      justify-content: center;
+	  justify-content: center;
+	  @media (max-width: 500px){
+		  width: @full;
+	  }
 
       h2 {
         width: 100%;
