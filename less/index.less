@@ -4,56 +4,341 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* Set every element's box-sizing to border-box */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
+// requirements:
+//Incorporate variables for color and font stacks, reusable ones
+
+@title-size: 5rem;
+@heading-large: 3rem;
+@heading-medium: 2rem;
+@default-text: 1rem;
+@work-image-size: 20%;
+@nav-a-color: #ffd8b1;
+@footer-color: #4363d8;
+@max: 100%;
+@half: 47%;
+@third: 31%;
+@heading-color: #fabebe;
+@intro-heading-color: #f58231;
+@skills-heading-color: #e6beff;
+@intro-text-color: 	#FF6347;
+
+// Create 2 mixins of your choosing. Hint: It's super helpful to use flexbox properties in mixins
+.margin-top-bot-min {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.margin-top-bot-med {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.margin-all-min {
+	margin: 2%;
+}
+
+.nav-margin {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.padding-all-min {
+	padding: 2%;
+  }
+
+//@icon-font: "font-awesome";
+
+// Every selector should be nested with div container. Avoid having global styles unless they are element level?
+
+// Mobile: Use nested-at rules to provide a mobile version of your resume.  Use `500px` as a `max-width` for mobile.
+
+.container {
+  font-family: "Inconsolata", "Roboto", "Open-Sans", sans-serif;
+  max-width: 880px;
+  width: @max;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  @media (max-width: 500px) {
+	  max-height: 600px;
+	  background-color: blue;
+  }
+
+  header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    .margin-top-bot-min();
+    h1 {
+      color: @heading-color;
+      font-size: @title-size;
+      .margin-top-bot-min();
+    }
+    nav {
+      width: @max;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      a {
+        text-decoration: none;
+        color: @nav-a-color;
+        font-size: @heading-medium;
+        .nav-margin();
+      }
+    }
+  }
+  .intro {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+	justify-content: center;
+	.margin-top-bot-min();
+	@media (max-width: 500px) {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		background-color: blue;
+	}
+
+    .intro-img {
+	  width: @half;
+	  @media (max-width: 500px) {
+		  width: @full;
+	  }
+	}
+    .intro-text {
+      width: 47%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+	  justify-content: center;
+	  @media (max-width: 500px){
+		  width: @full;
+	  }
+
+      h2 {
+        width: 100%;
+        font-size: @heading-medium;
+        color: @intro-heading-color;
+      }
+      p {
+		width: 100%;
+		.margin-top-bot-med();
+		color: @intro-text-color;
+      }
+    }
+  }
+  .skills {
+    width: @max;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .margin-top-bot-min();
+
+    .skills-heading {
+      width: @half;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      h2 {
+        font-size: @heading-large;
+        color: @skills-heading-color;
+      }
+    }
+    .skills-text {
+      width: @half;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .top-images {
+    width: @max;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .work-img {
+	  width: @half;
+	  .padding-all-min();
+      img {
+        width: @max;
+		height: 100%;
+      }
+    }
+  }
+  .bot-images {
+    width: @max;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .work-img {
+	  width: @half;
+	  .padding-all-min();
+      img {
+        width: @max;
+		height: 100%;
+      }
+    }
+  }
+  footer {
+    width: @max;
+    .margin-top-bot-med();
+    .contact {
+      nav {
+        width: @max;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        a {
+          text-decoration: none;
+          color: @footer-color;
+          .nav-margin();
+        }
+      }
+    }
+  }
+}
